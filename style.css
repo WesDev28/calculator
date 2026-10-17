@@ -1,0 +1,41 @@
+*, *::before, *::after {
+    box-sizing:border-box;
+}
+
+body {
+    height:100vh;
+    background:#28282B;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+
+}
+
+.calculatorDiv {
+    background:#36454F;
+    width: 800px;
+    aspect-ratio: 1 / 1.5;
+    display:flex;
+    flex-direction:column;
+}
+
+#screen {
+    background:black;
+    flex:1;
+    margin:20px;
+}
+
+
+#operators{
+    flex:2;
+    display:flex;
+
+
+}
+
+
+button {
+    font-size:24px;
+    flex:1;
+}
