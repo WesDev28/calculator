@@ -1,20 +1,27 @@
-*, *::before, *::after {
+*, *:before, *:after {
     box-sizing:border-box;
+    margin:0;
+    padding:0;
 }
 
 body {
-    height:100vh;
+    min-height:100vh;
     background:#28282B;
+    font-family:monospace;
     display:flex;
     justify-content:center;
     align-items:center;
 
+}
 
+button {
+    font-family:inherit;
 }
 
 .calculatorDiv {
     background:#36454F;
-    width: 800px;
+    width:50vw;
+    max-width: 800px;
     aspect-ratio: 1 / 1.5;
     display:flex;
     flex-direction:column;
@@ -27,15 +34,31 @@ body {
 }
 
 
-#operators{
-    flex:2;
+#digits {
+    flex:1.5;
     display:flex;
-
-
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:20px;
+    margin:10px;
 }
 
+#digits button {
+    font-size:30px;
+    width:225px;
+}
 
-button {
-    font-size:24px;
+#operators{
     flex:1;
+    display:flex;
+    justify-content:center;
+    gap:20px;
+    margin:10px;
 }
+
+#operators button {
+    font-size:30px;
+    width:225px;
+}
+
+
