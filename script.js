@@ -46,6 +46,11 @@ function digitListener(){
 function operatorListener(){
     operators.forEach(button => {
         button.addEventListener('click', event => {
+            if (event.target.id === 'equals'){
+                screenDisplay.textContent = '';
+                console.log('hello world');
+                return;
+                }
             screenDisplay.textContent += button.textContent;
         })
     })
