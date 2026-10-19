@@ -24,10 +24,10 @@ function divide(a,b){
 }
 
 function operate(a,b,operator){
-    return  operator === '+' ? add(a,b):
-            operator === '-' ? subtract(a,b):
-            operator === '*' ? multiply(a,b):
-            operator === '/' ? divide(a,b):
+    return  operator === 'add' ? add(a,b):
+            operator === 'subtract' ? subtract(a,b):
+            operator === 'multiply' ? multiply(a,b):
+            operator === 'divide' ? divide(a,b):
             'false input'
 }
 
@@ -47,7 +47,7 @@ function operatorListener(){
             if (numberOne === null && numberTwo ===null){
                 numberOne = Number(screenDisplay.textContent);
                 screenDisplay.textContent = button.textContent;
-                operator = button.textContent;
+                operator = event.target.id;
                 return;
             }
             else if (numberOne !== null && numberTwo === null){
