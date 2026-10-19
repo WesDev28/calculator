@@ -5,7 +5,7 @@ let numberTwo = null;
 const screenDisplay = document.querySelector('#screen');
 const digits = document.querySelectorAll('#digits button');
 const operators = document.querySelectorAll('#operators button');
-
+const clear = document.querySelector('#clearButton');
 
 function add(a,b){
     return a+b;
@@ -59,12 +59,22 @@ function operatorListener(){
                 let solution = operate(numberOne,numberTwo,operator);
                 screenDisplay.textContent = solution;
             }
- 
-        })
+         })
+    })
+}
+
+
+function clearAll() {
+    clear.addEventListener('click', event => {
+        numberOne = null;
+        numberTwo = null;
+        operator = null;
+        screenDisplay.textContent ='';
+        
     })
 }
 
 
 digitListener();
 operatorListener();
-
+clearAll();
