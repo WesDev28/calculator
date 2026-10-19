@@ -1,6 +1,7 @@
 const numberOne = 0;
 const operator = "+";
 const numberTwo = 0;
+const screenDisplay = document.querySelector('#screen');
 
 
 function add(a,b){
@@ -27,12 +28,10 @@ function operate(a,b,operator){
             'false input'
 }
 
-
-const digits = document.querySelector("#digits");
-
-digits.addEventListener("click",button => {
-    console.log(button.target.id);
-
+const digits = document.querySelectorAll("#digits button");
+digits.forEach(button => {
+    console.log(button);
+    button.addEventListener("click", event => {
+        console.log(event.target.id);
+    })
 })
-
-
