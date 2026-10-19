@@ -26,3 +26,13 @@ function operate(a,b,operator){
             operator === '/' ? divide(a,b):
             'false input'
 }
+
+
+const digits = document.querySelector("#digits");
+
+digits.addEventListener("click",button => {
+    console.log(button.target.id);
+
+})
+
+
