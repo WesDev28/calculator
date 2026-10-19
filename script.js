@@ -54,7 +54,6 @@ function operatorListener(){
             screenDisplay.textContent += button.textContent;
         })
     })
-
 }
 
 

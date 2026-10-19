@@ -62,4 +62,15 @@ button {
     width:225px;
 }
 
+#clear {
+    flex:0.5;
+    display:flex;
+    justify-content:center;
+    margin:10px;
 
+}
+
+#clearButton {
+    font-size:30px;
+    flex:1;
+}
