@@ -1,7 +1,6 @@
-const numberOne = 0;
-const operator = "+";
-const numberTwo = 0;
-
+let numberOne = null;
+let operator = null;
+let numberTwo = null;
 
 const screenDisplay = document.querySelector('#screen');
 const digits = document.querySelectorAll('#digits button');
@@ -35,10 +34,9 @@ function operate(a,b,operator){
 
 function digitListener(){
     digits.forEach(button => {
-        console.log(button);
-        button.addEventListener('click', event => {
-            screenDisplay.textContent += button.textContent;
-        })
+    button.addEventListener('click', event => {
+        screenDisplay.textContent += button.textContent;
+         })
     })
 }
 
@@ -46,17 +44,27 @@ function digitListener(){
 function operatorListener(){
     operators.forEach(button => {
         button.addEventListener('click', event => {
-            if (event.target.id === 'equals'){
-                screenDisplay.textContent = '';
-                console.log('hello world');
+            if (numberOne === null && numberTwo ===null){
+                numberOne = Number(screenDisplay.textContent);
+                screenDisplay.textContent = button.textContent;
+                operator = button.textContent;
                 return;
-                }
-            screenDisplay.textContent += button.textContent;
+            }
+            else if (numberOne !== null && numberTwo === null){
+                numberTwo = Number(screenDisplay.textContent.substring(1)); 
+                return;            
+            }
+
+            else if (numberOne !== null && numberTwo !== null & operator !== null){
+                let solution = operate(numberOne,numberTwo,operator);
+                screenDisplay.textContent = solution;
+            }
+ 
         })
     })
 }
 
 
-
 digitListener();
 operatorListener();
+
