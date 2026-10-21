@@ -62,6 +62,18 @@ button {
     width:225px;
 }
 
+#equals {
+    flex:0.5;
+    display:flex;
+    justify-content:center;
+    margin:10px;
+}
+
+#equalsButton {
+    font-size:30px;
+    flex:1;
+}
+
 #clear {
     flex:0.5;
     display:flex;
