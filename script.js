@@ -44,22 +44,8 @@ function digitListener(){
 function operatorListener(){
     operators.forEach(button => {
         button.addEventListener('click', event => {
-            if (numberOne === null && numberTwo ===null){
-                numberOne = Number(screenDisplay.textContent);
-                screenDisplay.textContent = button.textContent;
-                operator = event.target.id;
-                return;
-            }
-            else if (numberOne !== null && numberTwo === null){
-                numberTwo = Number(screenDisplay.textContent.substring(1)); 
-                return;            
-            }
-
-            else if (numberOne !== null && numberTwo !== null & operator !== null){
-                let solution = operate(numberOne,numberTwo,operator);
-                screenDisplay.textContent = solution;
-            }
-         })
+            screenDisplay.textContent += button.textContent;
+        })
     })
 }
 
@@ -75,6 +61,8 @@ function clearAll() {
 }
 
 
-digitListener();
-operatorListener();
-clearAll();
+
+
+if (numberOne === null){
+    digitListener();
+    }
