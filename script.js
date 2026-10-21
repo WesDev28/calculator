@@ -19,7 +19,7 @@ function divide(a,b){return a/b;}
 
 
 function operate(a,b,operator){
-
+    
     return  operator === 'add' ? add(a,b):
             operator === 'subtract' ? subtract(a,b):
             operator === 'multiply' ? multiply(a,b):
@@ -32,7 +32,7 @@ function digitListener(){
     digits.forEach(button => {
     button.addEventListener('click', event => {
         screenDisplay.textContent += button.textContent;
-         })
+        })
     })
 }
 
@@ -45,13 +45,22 @@ function operatorListener(){
                 operator = button.id;
                 screenDisplay.textContent = '';
                 screenDisplay.textContent += button.textContent;
+            } else if (screenDisplay.textContent.length > 1){
+                secondOperand = Number(screenDisplay.textContent.substring(1));
+                screenDisplay.textContent = operate(firstOperand,secondOperand,operator);
+                firstOperand = null;
+                operator = null;
+                secondOperand = null;
             }
+
         })
     })
 }
 
 function equalsListener(){
     equals.addEventListener('click', event => {
+        if (operator === null) return;
+        
         secondOperand = Number(screenDisplay.textContent.substring(1));
         screenDisplay.textContent = operate(firstOperand,secondOperand,operator);
         firstOperand = null;
