@@ -86,3 +86,9 @@ button {
     font-size:30px;
     flex:1;
 }
+
+.highlightButton {
+    background:blue;
+    border:none;
+    
+}

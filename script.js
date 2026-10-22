@@ -39,6 +39,7 @@ function digitListener(){
             screenDisplay.textContent = '';
             evalStatus = false;
             }
+        clearHighlight();
         screenDisplay.textContent += button.textContent;
         })
     })
@@ -53,14 +54,13 @@ function operatorListener(){
                 operator = button.id;
                 screenDisplay.textContent = '';
                 screenDisplay.textContent += button.textContent;
-                
+                button.classList.add("highlightButton")
+
+
             } else if (screenDisplay.textContent.length > 1){
                 secondOperand = Number(screenDisplay.textContent.substring(1));
                 screenDisplay.textContent = operate(firstOperand,secondOperand,operator);
-                firstOperand = null;
-                operator = null;
-                secondOperand = null;
-                
+                clearVars();
             }
             evalStatus = false;
         })
@@ -72,9 +72,7 @@ function equalsListener(){
         if (operator === null) return;
         secondOperand = Number(screenDisplay.textContent.substring(1));
         screenDisplay.textContent = operate(firstOperand,secondOperand,operator);
-        firstOperand = null;
-        operator = null;
-        secondOperand = null;
+        clearVars();
         evalStatus = true;
 
     })
@@ -82,13 +80,21 @@ function equalsListener(){
 
 function clearAll() {
     clear.addEventListener('click', event => {
-        firstOperand = null;
-        secondOperand = null;
-        operator = null;
+        clearVars();
         screenDisplay.textContent = '';
     })
 }
 
+
+function clearVars(){
+    firstOperand = null;
+    secondOperand = null;
+    operator = null;
+}
+
+function clearHighlight(){
+    operators.forEach(button => button.classList.remove('highlightButton'))
+}
 
 
 digitListener();
