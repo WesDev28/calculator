@@ -6,22 +6,30 @@
 
 body {
     min-height:100vh;
-    background:#28282B;
+    background:#00001a;
     font-family:monospace;
     display:flex;
-    justify-content:center;
+    flex-direction:column;
     align-items:center;
+    gap:200px;
 }
 
 button {
     font-family:inherit;
 }
 
+.header {
+    background:white;
+    width:100vw;
+    text-align:center;
+}
+
 .calculatorDiv {
-    background:#36454F;
-    width:50vw;
+    background:#0099ff;
+    border-radius: 20px;
+    width:20vw;
     max-width: 800px; 
-    height:80vh;
+    height:60vh;
     display:flex;
     flex-direction:column;
 }
@@ -36,7 +44,7 @@ button {
 
 
 #digits {
-    flex:1.5;
+    flex:1;
     display:flex;
     justify-content:center;
     flex-wrap:wrap;
@@ -46,7 +54,9 @@ button {
 
 #digits button {
     font-size:30px;
-    width:225px;
+    height:60px;
+    aspect-ratio: 1 /1;
+    
 }
 
 #operators{
@@ -59,7 +69,7 @@ button {
 
 #operators button {
     font-size:30px;
-    width:225px;
+    flex:1;
 }
 
 #equals {
