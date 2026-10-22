@@ -26,7 +26,7 @@ button {
 
 .calculatorDiv {
     background:#0099ff;
-    border-radius: 20px;
+    border-radius: 1.5rem;
     width:20vw;
     max-width: 800px; 
     height:60vh;
@@ -36,6 +36,7 @@ button {
 
 #screen {
     background:black;
+    border-radius:0.5rem;
     color:white;
     font-size:24px;
     flex:1;
@@ -93,7 +94,9 @@ button {
 }
 
 #clearButton {
+    background:royalblue;
     font-size:30px;
+    font-weight:bold;
     flex:1;
 }
 
