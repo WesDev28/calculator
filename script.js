@@ -10,6 +10,7 @@ const operators = document.querySelectorAll('#operators button');
 const equals = document.querySelector('#equalsButton');
 const clear = document.querySelector('#clearButton');
 
+
 function add(a,b){return a+b;}
 
 function subtract(a,b){return a-b;}
@@ -17,7 +18,6 @@ function subtract(a,b){return a-b;}
 function multiply(a,b){return a*b;}
 
 function divide(a,b){return a/b;}
-
 
 
 function operate(a,b,operator){
@@ -32,57 +32,47 @@ function operate(a,b,operator){
 }
 
 
-function digitListener(){
-    digits.forEach(button => {
-    button.addEventListener('click', event => {
-        if (evalStatus){ 
-            screenDisplay.textContent = '';
-            evalStatus = false;
-            }
-        clearHighlight();
-        screenDisplay.textContent += button.textContent;
-        })
-    })
+function handleDigit(event){
+    if (evalStatus){ 
+        screenDisplay.textContent = '';
+        evalStatus = false;
+        }
+    clearHighlight();
+    screenDisplay.textContent += event.target.textContent;
 }
 
 
-function operatorListener(){
-    operators.forEach(button => {
-        button.addEventListener('click', event => {
-            if(operator === null){
-                firstOperand = Number(screenDisplay.textContent);
-                operator = button.id;
-                screenDisplay.textContent = '';
-                screenDisplay.textContent += button.textContent;
-                button.classList.add("highlightButton")
+function handleOperator(event){
+    if(operator === null){
+        firstOperand = Number(screenDisplay.textContent);
+        operator = event.currentTarget.id;
+        screenDisplay.textContent = '';
+        screenDisplay.textContent += event.currentTarget.textContent;
+        event.currentTarget.classList.add("highlightButton")
 
 
-            } else if (screenDisplay.textContent.length > 1){
-                secondOperand = Number(screenDisplay.textContent.substring(1));
-                screenDisplay.textContent = operate(firstOperand,secondOperand,operator);
-                clearVars();
-            }
-            evalStatus = false;
-        })
-    })
-}
-
-function equalsListener(){
-    equals.addEventListener('click', event => {
-        if (operator === null) return;
+    } else if (screenDisplay.textContent.length > 1){
         secondOperand = Number(screenDisplay.textContent.substring(1));
         screenDisplay.textContent = operate(firstOperand,secondOperand,operator);
         clearVars();
-        evalStatus = true;
-
-    })
+    }
+    evalStatus = false;
 }
 
+
+function handleEquals(){
+    if (operator === null) return;
+
+    secondOperand = Number(screenDisplay.textContent.substring(1));
+    screenDisplay.textContent = operate(firstOperand,secondOperand,operator);
+    clearVars();
+    evalStatus = true;
+}
+
+
 function clearAll() {
-    clear.addEventListener('click', event => {
-        clearVars();
-        screenDisplay.textContent = '';
-    })
+    clearVars();
+    screenDisplay.textContent = '';
 }
 
 
@@ -92,12 +82,16 @@ function clearVars(){
     operator = null;
 }
 
+
 function clearHighlight(){
     operators.forEach(button => button.classList.remove('highlightButton'))
 }
 
 
-digitListener();
-operatorListener();
-equalsListener();
-clearAll();
+digits.forEach(button => button.addEventListener('click',handleDigit));
+operators.forEach(button => button.addEventListener('click',handleOperator));
+equals.addEventListener("click",handleEquals);
+clear.addEventListener("click", handleClear);
+
+
+
