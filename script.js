@@ -28,7 +28,7 @@ function operate(a,b,operator){
             operator === 'divide' ? divide(a,b):
             'false input'
 
-    return calculation;
+    return Math.round(calculation * 1e8) / 1e8;
 }
 
 
