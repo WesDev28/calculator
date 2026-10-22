@@ -50,7 +50,6 @@ function handleOperator(event){
         screenDisplay.textContent += event.currentTarget.textContent;
         event.currentTarget.classList.add("highlightButton")
 
-
     } else if (screenDisplay.textContent.length > 1){
         secondOperand = Number(screenDisplay.textContent.substring(1));
         screenDisplay.textContent = operate(firstOperand,secondOperand,operator);
@@ -70,7 +69,8 @@ function handleEquals(){
 }
 
 
-function clearAll() {
+function handleClear() {
+    clearHighlight();
     clearVars();
     screenDisplay.textContent = '';
 }
