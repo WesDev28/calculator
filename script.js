@@ -21,6 +21,11 @@ function divide(a,b){return a/b;}
 
 
 function operate(a,b,operator){
+    
+    if (operator === 'divide' && b === 0){
+        return 'aha nope'
+    }
+    
     let calculation =
             operator === 'add' ? add(a,b):
             operator === 'subtract' ? subtract(a,b):
@@ -54,6 +59,8 @@ function handleOperator(event){
         secondOperand = Number(screenDisplay.textContent.substring(1));
         screenDisplay.textContent = operate(firstOperand,secondOperand,operator);
         clearVars();
+        evalStatus = true;
+        return;
     }
     evalStatus = false;
 }
@@ -90,7 +97,7 @@ function clearHighlight(){
 
 digits.forEach(button => button.addEventListener('click',handleDigit));
 operators.forEach(button => button.addEventListener('click',handleOperator));
-equals.addEventListener("click",handleEquals);
+equals.addEventListener("click", handleEquals);
 clear.addEventListener("click", handleClear);
 
 
