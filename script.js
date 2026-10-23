@@ -1,6 +1,7 @@
-let firstOperand = null;
-let operator = null;
-let secondOperand = null;
+let firstOperand = "";
+let operator = "";
+let operatorSymbol = "";
+let secondOperand = "";
 
 let evalStatus = false;
 
@@ -20,20 +21,27 @@ function multiply(a,b){return a*b;}
 function divide(a,b){return a/b;}
 
 
-function operate(a,b,operator){
-    
-    if (operator === 'divide' && b === 0){
+function operate(a,b,operation){
+    a = Number(a);
+    b = Number(b);
+
+    if (operation === 'divide' && b === 0){
+        console.log("check")
         return 'aha nope'
     }
     
     let calculation =
-            operator === 'add' ? add(a,b):
-            operator === 'subtract' ? subtract(a,b):
-            operator === 'multiply' ? multiply(a,b):
-            operator === 'divide' ? divide(a,b):
+            operation === 'add' ? add(a,b):
+            operation === 'subtract' ? subtract(a,b):
+            operation === 'multiply' ? multiply(a,b):
+            operation === 'divide' ? divide(a,b):
             'false input'
 
     return Math.round(calculation * 1e8) / 1e8;
+}
+
+function renderMe(){
+    screenDisplay.textContent = firstOperand + operatorSymbol + secondOperand;
 }
 
 
@@ -42,34 +50,49 @@ function handleDigit(event){
         screenDisplay.textContent = '';
         evalStatus = false;
         }
-    clearHighlight();
-    screenDisplay.textContent += event.target.textContent;
+
+    if (!operator){ 
+        clearHighlight();
+        firstOperand += event.currentTarget.textContent;
+        renderMe();
+        }
+
+    else if (operator) {
+        clearHighlight();
+        secondOperand += event.currentTarget.textContent;
+        renderMe();
+    }    
 }
 
 
 function handleOperator(event){
-    if(operator === null){
+    if (evalStatus) {
+        screenDisplay.textContent = '';
+        evalSatus = false;
+    }
+
+    if(!operator){
         firstOperand = Number(screenDisplay.textContent);
         operator = event.currentTarget.id;
-        screenDisplay.textContent = '';
-        screenDisplay.textContent += event.currentTarget.textContent;
+        operatorSymbol = event.currentTarget.textContent;
         event.currentTarget.classList.add("highlightButton")
+        renderMe()
 
-    } else if (screenDisplay.textContent.length > 1){
-        secondOperand = Number(screenDisplay.textContent.substring(1));
+    } else if (operator){
+
         screenDisplay.textContent = operate(firstOperand,secondOperand,operator);
         clearVars();
         evalStatus = true;
         return;
     }
+
     evalStatus = false;
 }
 
 
 function handleEquals(){
-    if (operator === null) return;
+    if (!operator) return;
 
-    secondOperand = Number(screenDisplay.textContent.substring(1));
     screenDisplay.textContent = operate(firstOperand,secondOperand,operator);
     clearVars();
     evalStatus = true;
@@ -84,9 +107,10 @@ function handleClear() {
 
 
 function clearVars(){
-    firstOperand = null;
-    secondOperand = null;
-    operator = null;
+    firstOperand = "";
+    secondOperand = "";
+    operator = "";
+    operatorSymbol = "";
 }
 
 
