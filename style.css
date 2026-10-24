@@ -34,6 +34,13 @@ button {
     flex-direction:column;
 }
 
+
+#upperDisplay{
+    display:flex;
+
+}
+
+
 #screen {
     background:black;
     border-radius:0.5rem;
@@ -49,15 +56,25 @@ button {
     display:flex;
     justify-content:center;
     flex-wrap:wrap;
-    gap:20px;
-    margin:10px;
+    gap:10px;
 }
 
 #digits button {
     font-size:30px;
-    height:60px;
-    aspect-ratio: 1 /1;
-    
+    height:40px;
+    aspect-ratio: 1 /1;   
+}
+
+#backspace{
+    flex:1;
+    display:flex;
+}
+
+#backspaceButton{
+    height:40px;
+    aspect-ratio:1/1;
+    font-size:30px;
+    background:red;
 }
 
 #operators{

@@ -73,7 +73,7 @@ function handleOperator(event){
     if (operator && secondOperand) {
 
         const result = operate(firstOperand, secondOperand, operator);
-        console.log(result,typeof(result));
+
         if (firstOperand === null){
             showError();
             return;
@@ -102,7 +102,7 @@ function handleEquals(){
     if (!operator || !secondOperand) return;
 
     const result = operate(firstOperand, secondOperand, operator);
-    console.log(result,typeof(result));
+
     if (firstOperand === null){
         showError();
         return;
