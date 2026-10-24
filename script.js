@@ -40,61 +40,54 @@ function operate(a,b,operation){
     return Math.round(calculation * 1e8) / 1e8;
 }
 
-function renderMe(){
+function renderDisplay(){
     screenDisplay.textContent = firstOperand + operatorSymbol + secondOperand;
 }
 
 
 function handleDigit(event){
     if (evalStatus){ 
-        screenDisplay.textContent = '';
+        clearVars();
         evalStatus = false;
         }
 
     if (!operator){ 
         clearHighlight();
         firstOperand += event.currentTarget.textContent;
-        renderMe();
+        renderDisplay();
         }
 
     else if (operator) {
         clearHighlight();
         secondOperand += event.currentTarget.textContent;
-        renderMe();
+        renderDisplay();
     }    
 }
 
 
 function handleOperator(event){
-    if (evalStatus) {
-        screenDisplay.textContent = '';
-        evalSatus = false;
-    }
+    if (!firstOperand) return;
+    if (operator && !secondOperand) return;
+    if (operator && secondOperand) return;
+    
 
-    if(!operator){
-        firstOperand = Number(screenDisplay.textContent);
-        operator = event.currentTarget.id;
-        operatorSymbol = event.currentTarget.textContent;
-        event.currentTarget.classList.add("highlightButton")
-        renderMe()
 
-    } else if (operator){
-
-        screenDisplay.textContent = operate(firstOperand,secondOperand,operator);
-        clearVars();
-        evalStatus = true;
-        return;
-    }
-
-    evalStatus = false;
+    operator = event.currentTarget.id;
+    operatorSymbol = event.currentTarget.textContent;
+    clearHighlight();
+    event.currentTarget.classList.add('highlightButton');
+    renderDisplay();
 }
 
 
 function handleEquals(){
     if (!operator) return;
 
-    screenDisplay.textContent = operate(firstOperand,secondOperand,operator);
-    clearVars();
+    firstOperand = operate(firstOperand, secondOperand, operator);
+    operator = "";
+    operatorSymbol = "";
+    secondOperand = "";
+    renderDisplay()
     evalStatus = true;
 }
 
@@ -102,7 +95,7 @@ function handleEquals(){
 function handleClear() {
     clearHighlight();
     clearVars();
-    screenDisplay.textContent = '';
+    renderDisplay();
 }
 
 
