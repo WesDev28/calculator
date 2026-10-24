@@ -28,6 +28,7 @@ button {
     background:#0099ff;
     border-radius: 1.5rem;
     width:20vw;
+    min-width: 300px;
     max-width: 800px; 
     height:60vh;
     display:flex;
@@ -37,6 +38,7 @@ button {
 
 #upperDisplay{
     display:flex;
+    flex:1;
 
 }
 
@@ -48,11 +50,12 @@ button {
     font-size:24px;
     flex:1;
     margin:20px;
+    height:100px;
 }
 
 
 #digits {
-    flex:1;
+    flex:2;
     display:flex;
     justify-content:center;
     flex-wrap:wrap;
@@ -78,7 +81,7 @@ button {
 }
 
 #operators{
-    flex:1;
+    flex:0.5;
     display:flex;
     justify-content:center;
     gap:20px;
@@ -87,6 +90,7 @@ button {
 
 #operators button {
     font-size:30px;
+    height:40px;
     flex:1;
 }
 

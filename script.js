@@ -10,6 +10,7 @@ const digits = document.querySelectorAll('#digits button');
 const operators = document.querySelectorAll('#operators button');
 const equals = document.querySelector('#equalsButton');
 const clear = document.querySelector('#clearButton');
+const backspace = document.querySelector('#backspaceButton');
 
 
 function add(a,b){return a+b;}
@@ -79,8 +80,6 @@ function handleOperator(event){
             return;
         }
         firstOperand = String(result);
-        console.log(firstOperand);
-
         operator = event.currentTarget.id;
         operatorSymbol = event.currentTarget.textContent;
         event.currentTarget.classList.add('highlightButton');
@@ -108,7 +107,6 @@ function handleEquals(){
         return;
     }
     firstOperand = String(result)
-    console.log(firstOperand);
     operator = "";
     operatorSymbol = "";
     secondOperand = "";
@@ -136,6 +134,7 @@ function clearHighlight(){
     operators.forEach(button => button.classList.remove('highlightButton'))
 }
 
+
 function showError() {
     clearVars();
     clearHighlight();
@@ -144,10 +143,30 @@ function showError() {
 }
 
 
+function handleBackspace () {
+    if (secondOperand){
+        secondOperand = secondOperand.slice(0,-1);
+        renderDisplay();
+        return;
+    } else if (operatorSymbol) {
+        operatorSymbol = "";
+        operator = "";
+        renderDisplay();
+        return;
+    }else if (firstOperand) {
+        firstOperand = firstOperand.slice(0,-1);
+        renderDisplay();
+        return;
+    }  
+}
+
+
 digits.forEach(button => button.addEventListener('click',handleDigit));
 operators.forEach(button => button.addEventListener('click',handleOperator));
 equals.addEventListener("click", handleEquals);
 clear.addEventListener("click", handleClear);
+backspace.addEventListener("click", handleBackspace);
+
 
 
 
