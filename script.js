@@ -144,19 +144,18 @@ function showError() {
 
 
 function handleBackspace () {
+    evalStatus = false;
     if (secondOperand){
         secondOperand = secondOperand.slice(0,-1);
         renderDisplay();
-        return;
     } else if (operatorSymbol) {
         operatorSymbol = "";
         operator = "";
+        clearHighlight();
         renderDisplay();
-        return;
     }else if (firstOperand) {
         firstOperand = firstOperand.slice(0,-1);
         renderDisplay();
-        return;
     }  
 }
 
