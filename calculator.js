@@ -75,7 +75,7 @@ function handleOperator(event){
 
         const result = operate(firstOperand, secondOperand, operator);
 
-        if (firstOperand === null){
+        if (result === null){
             showError();
             return;
         }
@@ -86,7 +86,6 @@ function handleOperator(event){
         secondOperand = "";
         renderDisplay();
         return;
-
     }
     
     operator = event.currentTarget.id;
@@ -102,10 +101,11 @@ function handleEquals(){
 
     const result = operate(firstOperand, secondOperand, operator);
 
-    if (firstOperand === null){
+    if (result === null){
         showError();
         return;
     }
+
     firstOperand = String(result)
     operator = "";
     operatorSymbol = "";
