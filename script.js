@@ -26,7 +26,6 @@ function operate(a,b,operation){
     b = Number(b);
 
     if (operation === 'divide' && b === 0){
-        evalStatus = true;
         return null;
     }
     
@@ -72,11 +71,15 @@ function handleOperator(event){
     evalStatus = false;
 
     if (operator && secondOperand) {
-        firstOperand = operate(firstOperand, secondOperand, operator);
+
+        const result = operate(firstOperand, secondOperand, operator);
+        console.log(result,typeof(result));
         if (firstOperand === null){
             showError();
             return;
         }
+        firstOperand = String(result);
+        console.log(firstOperand);
 
         operator = event.currentTarget.id;
         operatorSymbol = event.currentTarget.textContent;
@@ -96,15 +99,16 @@ function handleOperator(event){
 
 
 function handleEquals(){
-    if (!operator) return;
+    if (!operator || !secondOperand) return;
 
-    firstOperand = operate(firstOperand, secondOperand, operator);
-
+    const result = operate(firstOperand, secondOperand, operator);
+    console.log(result,typeof(result));
     if (firstOperand === null){
         showError();
         return;
     }
-
+    firstOperand = String(result)
+    console.log(firstOperand);
     operator = "";
     operatorSymbol = "";
     secondOperand = "";
