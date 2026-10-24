@@ -73,13 +73,19 @@ function handleOperator(event){
 
     if (operator && secondOperand) {
         firstOperand = operate(firstOperand, secondOperand, operator);
+        if (firstOperand === null){
+            showError();
+            return;
+        }
+
         operator = event.currentTarget.id;
         operatorSymbol = event.currentTarget.textContent;
+        event.currentTarget.classList.add('highlightButton');
         secondOperand = "";
         renderDisplay();
         return;
 
-    };
+    }
     
     operator = event.currentTarget.id;
     operatorSymbol = event.currentTarget.textContent;
