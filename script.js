@@ -26,7 +26,7 @@ function operate(a,b,operation){
     b = Number(b);
 
     if (operation === 'divide' && b === 0){
-        console.log("check")
+        evalStatus = true;
         return 'aha nope'
     }
     
@@ -66,9 +66,11 @@ function handleDigit(event){
 
 
 function handleOperator(event){
+    
     if (!firstOperand) return;
     if (operator && !secondOperand) return;
-
+    evalStatus = false;
+    
     if (operator && secondOperand) {
         firstOperand = operate(firstOperand, secondOperand, operator);
         operator = event.currentTarget.id;
