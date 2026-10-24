@@ -27,7 +27,7 @@ function operate(a,b,operation){
 
     if (operation === 'divide' && b === 0){
         evalStatus = true;
-        return 'aha nope'
+        return null;
     }
     
     let calculation =
@@ -70,7 +70,7 @@ function handleOperator(event){
     if (!firstOperand) return;
     if (operator && !secondOperand) return;
     evalStatus = false;
-    
+
     if (operator && secondOperand) {
         firstOperand = operate(firstOperand, secondOperand, operator);
         operator = event.currentTarget.id;
@@ -93,6 +93,12 @@ function handleEquals(){
     if (!operator) return;
 
     firstOperand = operate(firstOperand, secondOperand, operator);
+
+    if (firstOperand === null){
+        showError();
+        return;
+    }
+
     operator = "";
     operatorSymbol = "";
     secondOperand = "";
@@ -118,6 +124,13 @@ function clearVars(){
 
 function clearHighlight(){
     operators.forEach(button => button.classList.remove('highlightButton'))
+}
+
+function showError() {
+    clearVars();
+    clearHighlight();
+    screenDisplay.textContent = 'aha nope';
+    evalStatus = true;
 }
 
 
