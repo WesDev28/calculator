@@ -68,10 +68,17 @@ function handleDigit(event){
 function handleOperator(event){
     if (!firstOperand) return;
     if (operator && !secondOperand) return;
-    if (operator && secondOperand) return;
+
+    if (operator && secondOperand) {
+        firstOperand = operate(firstOperand, secondOperand, operator);
+        operator = event.currentTarget.id;
+        operatorSymbol = event.currentTarget.textContent;
+        secondOperand = "";
+        renderDisplay();
+        return;
+
+    };
     
-
-
     operator = event.currentTarget.id;
     operatorSymbol = event.currentTarget.textContent;
     clearHighlight();
