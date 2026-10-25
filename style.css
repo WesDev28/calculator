@@ -22,9 +22,9 @@ button {
 }
 
 .calculatorDiv {
-    background:#0099ff;
+    background: #2b2b2b;
     border-radius: 1.5rem;
-    border: 5px solid white;
+    border: 3px solid #8c8c8c;
     width:20vw;
     min-width: 300px;
     max-width: 800px; 
@@ -35,27 +35,34 @@ button {
 }
 
 
-#upperDisplay{
-    display:flex;
-    flex:1.5;
-}
 
 #screen {
-    background:black;
+    background:#b8c9a3;
+    color:#1c2416;
+    border:4px solid #4a5240;
     border-radius:0.5rem;
-    color:white;
-    font-size:24px;
+    font-size:28px;
     flex:1;
     margin:20px;
     height:100px;
 }
 
 
+#buttonDisplay{
+    display:flex;
+    flex:2.75;
+}
+
+
+
 #digits {
     flex:2;
     display:flex;
     flex-wrap:wrap;
+    margin:10px;
     gap:10px;
+
+
 }
 
 #digits button {  
@@ -67,11 +74,14 @@ button {
     flex:2;
     display:flex;
     flex-direction:column;
+    margin:10px;
+    gap:10px;
 }
 
 #topRow {
     flex:1;
     display:flex;
+    gap:10px;
 }
 
 
@@ -81,6 +91,7 @@ button {
 }
 
 #backspaceButton{
+    background:royalblue;   
     flex:1;
 }
 
@@ -99,10 +110,11 @@ button {
     flex:1;
     display:flex;
     flex-wrap:wrap;
+    gap:10px;
 }
 
 #operators button {
-    flex: 0 0 calc((100%) /2);
+    flex: 0 0 calc((100% - 10px) /2);
 }
 
 #equals {
@@ -117,11 +129,12 @@ button {
 
 /* class that shows operator selected */
 .highlightButton {
-    background:blue;
+    background:magenta;
     border:none;
 }
 
 
 button {
     font-size:30px;
+    background:#f2e8d5;
 }
