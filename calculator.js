@@ -45,6 +45,12 @@ function renderDisplay(){
 }
 
 
+function checkRepeatDecimal(event){
+    const dotString = firstOperand + operatorSymbol + secondOperand;
+    return (dotString.includes(".") && event.currentTarget.textContent === ".");
+}
+
+
 function handleDigit(event){
     if (evalStatus){ 
         clearVars();
@@ -53,12 +59,14 @@ function handleDigit(event){
 
     if (!operator){ 
         clearHighlight();
+        if (checkRepeatDecimal(event)) return;
         firstOperand += event.currentTarget.textContent;
         renderDisplay();
         }
 
     else if (operator) {
         clearHighlight();
+        if (checkRepeatDecimal(event)) return;
         secondOperand += event.currentTarget.textContent;
         renderDisplay();
     }    
