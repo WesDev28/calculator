@@ -10,8 +10,6 @@ body {
     font-family:monospace;
     display:flex;
     flex-direction:column;
-    align-items:center;
-    gap:200px;
 }
 
 button {
@@ -20,88 +18,125 @@ button {
 
 .header {
     background:white;
-    width:100vw;
     text-align:center;
 }
 
 .calculatorDiv {
-    background:#0099ff;
+    background: #2b2b2b;
     border-radius: 1.5rem;
+    border: 3px solid #8c8c8c;
     width:20vw;
+    min-width: 300px;
     max-width: 800px; 
     height:60vh;
+    margin: auto;
     display:flex;
     flex-direction:column;
 }
 
+
+
 #screen {
-    background:black;
+    background:#b8c9a3;
+    color:#1c2416;
+    border:4px solid #4a5240;
     border-radius:0.5rem;
-    color:white;
-    font-size:24px;
+    font-size:28px;
     flex:1;
     margin:20px;
+    height:100px;
 }
 
 
-#digits {
-    flex:1;
+#buttonDisplay{
     display:flex;
-    justify-content:center;
+    flex:2.75;
+}
+
+
+
+#digits {
+    flex:2;
+    display:flex;
     flex-wrap:wrap;
-    gap:20px;
     margin:10px;
+    gap:10px;
+
+
 }
 
 #digits button {
     font-size:30px;
-    height:40px;
+    height:60px;
     aspect-ratio: 1 /1;
     
 }
 
-#operators{
+#rightColumn{
+    flex:2;
+    display:flex;
+    flex-direction:column;
+    margin:10px;
+    gap:10px;
+}
+
+#topRow {
     flex:1;
     display:flex;
-    justify-content:center;
-    gap:20px;
-    margin:10px;
+    gap:10px;
 }
 
-#operators button {
-    font-size:30px;
+
+#backspace{
     flex:1;
-}
-
-#equals {
-    flex:0.5;
     display:flex;
-    justify-content:center;
-    margin:10px;
 }
 
-#equalsButton {
-    font-size:30px;
+#backspaceButton{
+    background:royalblue;   
     flex:1;
 }
 
 #clear {
-    flex:0.5;
+    flex:1;
     display:flex;
-    justify-content:center;
-    margin:10px;
-
 }
 
 #clearButton {
     background:royalblue;
-    font-size:30px;
-    font-weight:bold;
     flex:1;
 }
 
+
+#operators{
+    flex:1;
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+}
+
+#operators button {
+    flex: 0 0 calc((100% - 10px) /2);
+}
+
+#equals {
+    flex:1;
+    display:flex;
+}
+
+#equalsButton {
+    flex:1;
+}
+
+
+/* class that shows operator selected */
 .highlightButton {
-    background:blue;
+    background:magenta;
     border:none;
-    
+}
+
+
+button {
+    font-size:30px;
+    background:#f2e8d5;
 }
